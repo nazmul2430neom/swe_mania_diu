@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:login_page/login_page.dart';
 import 'package:login_page/registration_page.dart';
 import 'package:login_page/screen/bottom_nav.dart';
+import 'package:login_page/screen/gallery.dart';
+import 'package:login_page/screen/notice.dart';
 
 void main() {
   runApp(const MyApp());
