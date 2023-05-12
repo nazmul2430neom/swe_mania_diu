@@ -11,39 +11,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-   final GlobalKey<ScaffoldState> _scaffoldkey=GlobalKey<ScaffoldState>();
-    
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key:_scaffoldkey,
-      
-     appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.black12,
-        leading: InkWell(
-          onTap: (){
-             _scaffoldkey.currentState!.openDrawer();
-             
-          },
-          child: Icon(Icons.menu, size: 30,color: Colors.white70,)),
-        title: Text("DIU SWE MANIA",style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.w700)),
-        actions: [
-          Icon(Icons.share,size: 30,color: Colors.white,),
-          Padding(
-            padding: EdgeInsets.only(right: 10,left: 8),
-            child: Icon(Icons.more_vert,size: 30,color: Colors.white,),
-          )
-        ],
-      ),
-      
       backgroundColor: Colors.black87,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            
-            
-      
+
              Padding(
               padding: EdgeInsets.only(top: 180,left: 6,right: 6),
               child: Container(

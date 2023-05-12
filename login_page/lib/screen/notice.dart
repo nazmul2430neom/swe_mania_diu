@@ -15,21 +15,6 @@ class _NoticeState extends State<Notice> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black87,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.black12,
-        leading: Icon(Icons.menu,size: 30,color: Colors.white70,),
-        title: Text("DIU SWE MANIA",style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.w700)),
-        actions: [
-          Icon(Icons.share,size: 30,color: Colors.white,),
-          Padding(
-            padding: EdgeInsets.only(right: 10,left: 8),
-            child: Icon(Icons.more_vert,size: 30,color: Colors.white,),
-          )
-        ],
-      ),
-
-      
       body: SingleChildScrollView(
         child: Column(
           children: [

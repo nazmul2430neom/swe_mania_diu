@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:login_page/screen/add_post.dart';
+import 'package:login_page/screen/drawer_design.dart';
 import 'package:login_page/screen/gallery.dart';
 import 'package:login_page/screen/home_screen.dart';
 import 'package:login_page/screen/notice.dart';
@@ -17,6 +18,7 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+  final _scaffoldkey = GlobalKey<ScaffoldState>();
 
   int currentIndex=0;
   List<Widget> pages=[
@@ -29,6 +31,23 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key:_scaffoldkey,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.black,
+        title: Text("DIU SWE MANIA",style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.w700)),
+        actions: [
+          Icon(Icons.share,size: 30,color: Colors.white,),
+          Padding(
+            padding: EdgeInsets.only(right: 10,left: 8),
+            child: Icon(Icons.more_vert,size: 30,color: Colors.white,),
+          )
+        ],
+      ),
+
+      //drawer: Drawer(),
+      drawer: DrawerDesign(),
+
       body: pages[currentIndex],
       
       bottomNavigationBar: BottomNavigationBar(
