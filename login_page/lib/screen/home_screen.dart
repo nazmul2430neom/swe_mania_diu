@@ -11,15 +11,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+   final GlobalKey<ScaffoldState> _scaffoldkey=GlobalKey<ScaffoldState>();
     
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key:_scaffoldkey,
       
      appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.black12,
-        leading: Icon(Icons.menu,size: 30,color: Colors.white70,),
+        leading: InkWell(
+          onTap: (){
+             _scaffoldkey.currentState!.openDrawer();
+             
+          },
+          child: Icon(Icons.menu, size: 30,color: Colors.white70,)),
         title: Text("DIU SWE MANIA",style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.w700)),
         actions: [
           Icon(Icons.share,size: 30,color: Colors.white,),
@@ -87,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
       
                       Padding(
                           padding: EdgeInsets.only(left: 14,top: 8),
-                          child: Text("Your final defense will be held on June 02,2023 ",style: GoogleFonts.lato(color: Colors.black87,fontSize: 18,fontWeight: FontWeight.w500)),
+                          child: Text("Your final defense will be held on June 02,2023 ",style: GoogleFonts.rubik(color: Colors.black87,fontSize: 18,fontWeight: FontWeight.w300)),
                         ),  
       
                   ],
