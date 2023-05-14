@@ -21,7 +21,12 @@ class _DocumentDesignState extends State<DocumentDesign> {
             padding:EdgeInsets.only(top: 50,left: 20),
             child: Row(
               children: [
-                Icon(Icons.arrow_back,color: Colors.white60,size: 25,),
+                InkWell(
+                  onTap: (){
+                    Navigator.of(context).pop();
+                  },
+                  child: Icon(Icons.arrow_back,color: Colors.white60,size: 25,),
+                  ),
                 SizedBox(width: 30,),
                 Text("Documents",style: GoogleFonts.rubik(color: Colors.white,fontSize: 22,fontWeight:FontWeight.w400),)
               ],

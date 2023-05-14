@@ -12,22 +12,26 @@ class Gallery extends StatefulWidget {
 class _GalleryState extends State<Gallery> {
   final imgList=[
 
+
+       "images/dpic2.jpg",
        "images/pic20.jpg",
        "images/pic1.jpg",
+       "images/pic12.jpg",
+       "images/pic23.jpg",
        "images/pic9.jpg",
        
        
        "images/pic14.png",
        "images/pic8.jpg",
-       "images/pic12.jpg",
-       "images/pic23.jpg",
+       
+       
        
        
        "images/pic18.jpg",
        "images/pic2.jpg",
-       "images/pic23.jpg",
+       "images/dpic.jpg",
        
-       "images/pic3.jpg",
+       "images/dpic1.jpg",
        "images/pic17.jpg",
        "images/pic19.jpg",
        "images/pic4.jpg",

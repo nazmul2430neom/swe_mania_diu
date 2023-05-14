@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,6 +13,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
 
+  final CarouselController carouselController= CarouselController();
+  int currentIndex=0;
+  List imageList=[
+    
+    {"id":1,"image_path":"images/dpic2.jpg"},
+    {"id":2,"image_path":"images/dpic.jpg"},
+    {"id":3,"image_path":"images/dpic4.jpg"},
+    {"id":4,"image_path":"images/pic8.jpg"},
+
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,11 +32,80 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
 
+            //Image(image: AssetImage("images/dpic.jpg"),height: 220,width: double.infinity,fit: BoxFit.cover,),
+           // Image(image: AssetImage("images/dpic2.jpg"),height: 220,width: double.infinity,fit: BoxFit.cover,),
+
+            Stack(
+              children: [
+                 InkWell(
+                  onTap: (){
+                    print(currentIndex);
+                  },
+                  child: CarouselSlider(
+                    items: imageList.map(
+                      (item) => Image.asset(
+                        item["image_path"],
+                        fit: BoxFit.cover,
+                        width: double.infinity,
+                      ),
+                      ).toList(),
+                    carouselController: carouselController,
+                    options: CarouselOptions(
+                      scrollPhysics: BouncingScrollPhysics(),
+                      autoPlay: true,
+                      aspectRatio: 2,
+                      viewportFraction: 1,
+                      onPageChanged: (index,reason){
+                        setState(() {
+                          currentIndex=index;
+                        });
+                      }
+                    )
+                    ),
+                  ),
+
+
+                 Positioned(
+                  bottom: 10,
+                  left: 0,
+                  right: 0,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: imageList.asMap().entries.map((entry) {
+                      print(entry);
+                      print(entry.key);
+                      return GestureDetector(
+                        onTap: ()=> carouselController.animateToPage(entry.key),
+                        child: Container(
+                          width: currentIndex==entry.key?17:7,
+                          height: 7,
+                          margin: EdgeInsets.symmetric(horizontal: 3),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: currentIndex==entry.key
+                            ? Colors.white
+                            : Colors.teal
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  )
+                  ),
+
+              ],
+            ),
+
+
+
+            
+              
+              
+            
+
              Padding(
-              padding: EdgeInsets.only(top: 180,left: 6,right: 6),
+              padding: EdgeInsets.only(top: 12,left: 6,right: 6),
               child: Container(
                 height: 140,
-                width: double.infinity,
                 decoration: BoxDecoration(
                   color: Color.fromARGB(255, 252, 241, 241),
                   borderRadius: BorderRadius.circular(12),
@@ -70,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
       
                       Padding(
                           padding: EdgeInsets.only(left: 14,top: 8),
-                          child: Text("Your final defense will be held on June 02,2023 ",style: GoogleFonts.rubik(color: Colors.black87,fontSize: 18,fontWeight: FontWeight.w300)),
+                          child: Text("Your final defense will be held on June 08,2023 ",style: GoogleFonts.rubik(color: Colors.black87,fontSize: 18,fontWeight: FontWeight.w300)),
                         ),  
       
                   ],
@@ -83,7 +164,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: EdgeInsets.only(top: 6,left: 6,right: 6),
               child: Container(
-                height: 130,
+                height: 160,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: Color.fromARGB(255, 252, 241, 241),
@@ -125,7 +206,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 
                       Padding(
                           padding: EdgeInsets.only(left: 14,top: 12),
-                          child: Text("Update Routine for Software Engineering Department of Summer 2023 ",style: GoogleFonts.rubik(color: Colors.black87,fontSize: 18,fontWeight: FontWeight.w300),),
+                          child: Text("Join DIU Cultural Club ",style: GoogleFonts.rubik(color: Colors.black87,fontSize: 18,fontWeight: FontWeight.w700),),
+                        ), 
+
+
+                      Padding(
+                          padding: EdgeInsets.only(left: 14,top: 8),
+                          child: Text("Students who are interested to join our official cultural club,they can join our team by fill up a  form ",style: GoogleFonts.rubik(color: Colors.black87,fontSize: 18,fontWeight: FontWeight.w300)),
                         ),  
                 
                   ],
@@ -243,7 +330,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   Padding(
                         padding: EdgeInsets.only(left: 14,top: 10),
-                        child: Text("Greetings,Daffodil International University is going to organize an workshop on Robotics and Artificial Intelligence  held from 12 May,2023 at 2.30 pm.Students who are interested in Robotics and Artificial Intelligence are warmly invited to join the workshop and explore your ideas and to start a bright career in future. ",style:GoogleFonts.lato(color: Colors.black87,fontSize: 18,fontWeight: FontWeight.w300)),
+                        child: Text("Greetings,Daffodil International University is going to organize an workshop on Robotics and Artificial Intelligence  held from 12 May,2023 at 2.30 pm.Students who are interested in Robotics and Artificial Intelligence are warmly invited to join the workshop and explore your ideas and to start a bright career in future. ",style:GoogleFonts.rubik(color: Colors.black87,fontSize: 18,fontWeight: FontWeight.w300)),
                       ),  
 
                 ],
